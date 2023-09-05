@@ -202,8 +202,6 @@
     "no-restricted-syntax": "off"
   },
   "ignorePatterns": [
-    ".eslintrc.js",
-    "src/**/*.test.ts*",
-    "src/**/*.stories.ts*"
+    "vite.config.ts"
   ]
 }
