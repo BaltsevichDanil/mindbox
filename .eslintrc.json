@@ -36,6 +36,8 @@
     "import/no-cycle": "off",
     "@typescript-eslint/lines-between-class-members": "off",
     "max-classes-per-file": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/no-named-as-default": "off",
     "semi": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
