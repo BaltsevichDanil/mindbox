@@ -1,7 +1,9 @@
 import {ButtonHTMLAttributes, FC, PropsWithChildren} from 'react'
 import styled from 'styled-components'
 
-interface IProps extends PropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {
+interface IProps
+  extends PropsWithChildren,
+    ButtonHTMLAttributes<HTMLButtonElement> {
   secondary?: boolean
 }
 

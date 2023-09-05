@@ -1,9 +1,9 @@
-import { v4 as uuidv4 } from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 import type {Todo} from './models'
 
 // Get all todos
-export const getTodos =  (): Record<string, Todo> => {
+export const getTodos = (): Record<string, Todo> => {
   const todos: Record<string, Todo> = {}
 
   Object.entries(localStorage).forEach(([key, todo]) => {
@@ -58,4 +58,3 @@ export const createTodo = (title: string): Todo => {
 export const deleteTodo = (id: string): void => {
   localStorage.removeItem(id)
 }
-

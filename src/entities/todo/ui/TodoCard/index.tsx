@@ -1,6 +1,6 @@
 import {FC, ReactNode} from 'react'
-
 import styled from 'styled-components'
+
 import {ToDoContainer} from 'src/shared'
 
 interface IProps {
@@ -24,9 +24,9 @@ const TodoCard: FC<IProps> = props => {
 }
 
 const TodoContent = styled.div`
-display: flex;
-align-items: center;
-gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `
 
 export default TodoCard

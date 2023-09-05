@@ -19,9 +19,7 @@ const Delete: FC<IProps> = ({todoId}) => {
     deleteTodoModel.deleteTodoEvent.deleteTodo({todoId})
   }
 
-  return (
-    <Button onClick={handleClick}>Удалить</Button>
-  )
+  return <Button onClick={handleClick}>Удалить</Button>
 }
 
 export default Delete

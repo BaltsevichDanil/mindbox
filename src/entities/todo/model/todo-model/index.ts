@@ -17,16 +17,17 @@ const getTodoListFx = createEffect(() => {
 
 export const todoInitialState: Record<string, Todo> = {}
 
-export const $todos = createStore(todoInitialState)
-  .on(getTodoListFx.doneData, (_, payload) => payload)
-
-export const $queryConfig = createStore<QueryConfig>({completed: false, createdAt: true}).on(
-  setQueryConfig,
+export const $todos = createStore(todoInitialState).on(
+  getTodoListFx.doneData,
   (_, payload) => payload
 )
 
-export const $todoListLoading = getTodoListFx
-  .pending
+export const $queryConfig = createStore<QueryConfig>({
+  completed: false,
+  createdAt: true
+}).on(setQueryConfig, (_, payload) => payload)
+
+export const $todoListLoading = getTodoListFx.pending
 
 export const $todoList = combine($todos, todo => Object.values(todo))
 
@@ -38,11 +39,15 @@ export const $todosFiltered = combine(
       const completedTodos = todoList.filter(todo => todo.completed)
       const uncompletedTodos = todoList.filter(todo => !todo.completed)
 
-      return [...uncompletedTodos, ...completedTodos, ]
+      return [...uncompletedTodos, ...completedTodos]
     }
 
     if (config.createdAt) {
-      return todoList.sort((firstTodo, secondTodo) => new Date(secondTodo.createdAt).getTime() - new Date(firstTodo.createdAt).getTime())
+      return todoList.sort(
+        (firstTodo, secondTodo) =>
+          new Date(secondTodo.createdAt).getTime() -
+          new Date(firstTodo.createdAt).getTime()
+      )
     }
 
     return todoList

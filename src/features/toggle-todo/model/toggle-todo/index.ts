@@ -1,12 +1,11 @@
 import {createEvent} from 'effector'
 
 import {todoModel} from 'src/entities'
-import { api } from 'src/shared'
+import {api} from 'src/shared'
 
 type ToggleTodoConfig = {
   todoId: string
 }
-
 
 const toggleTodo = createEvent<ToggleTodoConfig>()
 

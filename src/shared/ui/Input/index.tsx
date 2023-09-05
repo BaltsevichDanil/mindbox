@@ -7,14 +7,9 @@ interface IProps {
 }
 
 const Input: FC<IProps> = props => {
-const {name, placeholder} = props
+  const {name, placeholder} = props
 
-  return (
-    <StyledInput
-      name={name}
-      placeholder={placeholder}
-    />
-  )
+  return <StyledInput name={name} placeholder={placeholder} />
 }
 
 const StyledInput = styled.input`

@@ -1,12 +1,11 @@
 import {createEvent} from 'effector'
 
 import {todoModel} from 'src/entities'
-import { api } from 'src/shared'
+import {api} from 'src/shared'
 
 type DeleteTodoConfig = {
   todoId: string
 }
-
 
 const deleteTodo = createEvent<DeleteTodoConfig>()
 
