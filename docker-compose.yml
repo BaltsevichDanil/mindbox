@@ -1,0 +1,7 @@
+services:
+  client:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: unless-stopped
