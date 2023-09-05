@@ -26,10 +26,7 @@ const View: FC<IProps> = props => {
           <RadioButton
             type='radio'
             id={filter.name}
-            checked={
-              (filter.name === 'completed' && queryConfig.completed) ||
-              (filter.name === 'createdAt' && queryConfig.createdAt)
-            }
+            checked={filter.config.completed === queryConfig.completed}
             onChange={(): void => handleClick(filter.name)}
             disabled={loading}
           />

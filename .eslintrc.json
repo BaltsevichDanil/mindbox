@@ -205,6 +205,8 @@
     "no-restricted-syntax": "off"
   },
   "ignorePatterns": [
-    "vite.config.ts"
+    "vite.config.ts",
+    "jest.config.ts",
+    "src/__tests__"
   ]
 }

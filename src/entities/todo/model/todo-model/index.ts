@@ -6,7 +6,6 @@ import {Todo} from 'src/shared/api/models'
 
 export type QueryConfig = {
   completed?: boolean
-  createdAt?: boolean
 }
 
 const setQueryConfig = createEvent<QueryConfig>()
@@ -22,10 +21,10 @@ export const $todos = createStore(todoInitialState).on(
   (_, payload) => payload
 )
 
-export const $queryConfig = createStore<QueryConfig>({
-  completed: true,
-  createdAt: false
-}).on(setQueryConfig, (_, payload) => payload)
+export const $queryConfig = createStore<QueryConfig>({}).on(
+  setQueryConfig,
+  (_, payload) => payload
+)
 
 export const $todoListLoading = getTodoListFx.pending
 
@@ -35,19 +34,16 @@ export const $todosFiltered = combine(
   $todoList,
   $queryConfig,
   (todoList, config) => {
-    if (config.completed) {
-      const completedTodos = todoList.filter(todo => todo.completed)
-      const uncompletedTodos = todoList.filter(todo => !todo.completed)
+    if (config.completed !== undefined) {
+      if (config.completed) {
+        const completedTodos = todoList.filter(todo => todo.completed)
+        return [...completedTodos]
+      }
 
-      return [...uncompletedTodos, ...completedTodos]
-    }
-
-    if (config.createdAt) {
-      return todoList.sort(
-        (firstTodo, secondTodo) =>
-          new Date(secondTodo.createdAt).getTime() -
-          new Date(firstTodo.createdAt).getTime()
-      )
+      if (!config.completed) {
+        const uncompletedTodos = todoList.filter(todo => !todo.completed)
+        return [...uncompletedTodos]
+      }
     }
 
     return todoList
