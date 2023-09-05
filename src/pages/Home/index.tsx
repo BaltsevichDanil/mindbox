@@ -1,14 +1,12 @@
 import {FC} from 'react'
 
-import CreateTodo from 'src/features/craate-todo/ui/CreateTodo'
-import {ToDosContainer} from 'src/shared/ui'
-import {TodoList} from 'src/widgets'
+import {ToDosContainer} from 'src/shared'
+import {Todos} from 'src/widgets'
 
 const Home: FC = () => {
   return (
     <ToDosContainer>
-      <CreateTodo />
-      <TodoList />
+      <Todos />
     </ToDosContainer>
   )
 }

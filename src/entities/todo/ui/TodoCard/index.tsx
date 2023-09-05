@@ -16,7 +16,7 @@ const TodoCard: FC<IProps> = props => {
     <ToDoContainer>
       <TodoContent>
         {before}
-        <p>{data.title}</p>
+        <TodoText $completed={data.completed}>{data.title}</TodoText>
       </TodoContent>
       {after}
     </ToDoContainer>
@@ -27,6 +27,11 @@ const TodoContent = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`
+
+const TodoText = styled.p<{$completed?: boolean}>`
+  text-decoration: ${(props): string =>
+    props.$completed ? 'line-through' : 'none'};
 `
 
 export default TodoCard

@@ -23,8 +23,8 @@ export const $todos = createStore(todoInitialState).on(
 )
 
 export const $queryConfig = createStore<QueryConfig>({
-  completed: false,
-  createdAt: true
+  completed: true,
+  createdAt: false
 }).on(setQueryConfig, (_, payload) => payload)
 
 export const $todoListLoading = getTodoListFx.pending
@@ -61,6 +61,8 @@ const useTodo = (
 }
 
 export const $todoListEmpty = $todosFiltered.map(list => list.length === 0)
+
+export const useTodoFilter = (): QueryConfig => useStore($queryConfig)
 
 export const events = {setQueryConfig}
 

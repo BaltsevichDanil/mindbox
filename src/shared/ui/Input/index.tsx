@@ -13,7 +13,7 @@ const Input: FC<IProps> = props => {
 }
 
 const StyledInput = styled.input`
-  height: 30px;
+  height: 40px;
   width: 100%;
 
   border-radius: 8px;

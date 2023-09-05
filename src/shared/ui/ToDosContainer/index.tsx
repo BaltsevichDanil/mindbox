@@ -19,6 +19,7 @@ const Center = styled.div`
 
 const Container = styled.div`
   width: 50%;
+  max-width: 800px;
   height: 600px;
 
   background-color: var(--primary-container-color);
@@ -26,6 +27,10 @@ const Container = styled.div`
   border-radius: 16px;
 
   padding: 24px;
+
+  @media screen and (max-width: 720px) {
+    width: 98%;
+  }
 `
 
 export default ToDosContainer

@@ -1,4 +1,5 @@
 import {FC} from 'react'
+import {BsTrash} from 'react-icons/bs'
 
 import {todoModel} from 'src/entities'
 import {deleteTodoModel} from 'src/features'
@@ -19,7 +20,11 @@ const Delete: FC<IProps> = ({todoId}) => {
     deleteTodoModel.deleteTodoEvent.deleteTodo({todoId})
   }
 
-  return <Button onClick={handleClick}>Удалить</Button>
+  return (
+    <Button onClick={handleClick} secondary height={30} width={30}>
+      <BsTrash />
+    </Button>
+  )
 }
 
 export default Delete
