@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import {createTodoModel} from 'src/features'
 import {Input, Button, text} from 'src/shared'
 
-
 interface ICustomElements extends HTMLFormControlsCollection {
   title: HTMLInputElement
 }

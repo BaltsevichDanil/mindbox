@@ -8,17 +8,23 @@ export type Filter = {
 }
 
 export const filters: Record<string, Filter> = {
-  completed: {
+  all: {
     id: 1,
-    name: 'completed',
-    title: text.completed,
-    config: {completed: true, createdAt: false}
+    title: text.all,
+    name: 'all',
+    config: {}
   },
-  createdAt: {
+  completed: {
     id: 2,
-    name: 'createdAt',
-    title: text.createdAt,
-    config: {completed: false, createdAt: true}
+    title: text.completed,
+    name: 'completed',
+    config: {completed: true}
+  },
+  uncompleted: {
+    id: 3,
+    title: text.uncomleted,
+    name: 'uncompleted',
+    config: {completed: false}
   }
 }
 

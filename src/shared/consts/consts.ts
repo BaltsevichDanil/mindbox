@@ -3,6 +3,7 @@ export const text = {
   createTodo: 'Создать задачу',
   dontHaveTodos: 'Нет задач',
   loading: 'Загрузка...',
-  completed: 'Сначала не выполенные',
-  createdAt: 'Сначала новые'
+  all: 'Все',
+  completed: 'Выполненные',
+  uncomleted: 'Невыполненные'
 }
