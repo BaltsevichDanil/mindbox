@@ -1,15 +1,17 @@
-import {FC, PropsWithChildren} from 'react'
+import {ButtonHTMLAttributes, FC, PropsWithChildren} from 'react'
 import styled from 'styled-components'
 
-interface IProps extends PropsWithChildren {
+interface IProps
+  extends PropsWithChildren,
+    ButtonHTMLAttributes<HTMLButtonElement> {
   secondary?: boolean
-  onClick?: VoidFunction
 }
 
 const Button: FC<IProps> = props => {
-  const {secondary, onClick, children} = props
+  const {secondary, children} = props
+
   return (
-    <ButtonContainer $secondary={secondary} onClick={onClick}>
+    <ButtonContainer $secondary={secondary} {...props}>
       {children}
     </ButtonContainer>
   )

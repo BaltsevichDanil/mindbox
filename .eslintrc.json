@@ -120,7 +120,8 @@
         "format": [
           "camelCase",
           "snake_case"
-        ]
+        ],
+        "leadingUnderscore": "allow"
       },
       {
         "selector": "memberLike",
