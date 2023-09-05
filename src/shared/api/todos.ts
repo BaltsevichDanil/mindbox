@@ -8,7 +8,13 @@ export const getTodos = (): Record<string, Todo> => {
 
   Object.entries(localStorage).forEach(([key, todo]) => {
     try {
-      todos[key] = JSON.parse(todo)
+      const parsedTodo = JSON.parse(todo)
+      if (
+        parsedTodo.id !== undefined &&
+        parsedTodo.title !== undefined
+      ) {
+        todos[key] = parsedTodo
+      }
     } catch (e) {
       return
     }
