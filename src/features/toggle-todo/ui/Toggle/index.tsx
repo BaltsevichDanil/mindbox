@@ -1,7 +1,7 @@
 import {FC} from 'react'
 
 import {todoModel} from 'src/entities'
-import * as toggleTodoModel from 'src/features/toggle-todo/model'
+import { toggleTodoModel } from 'src/features'
 
 interface IProps {
   todoId: string
@@ -14,10 +14,12 @@ const Toggle: FC<IProps> = ({todoId}) => {
     return null
   }
 
-  const handleClick = (): string => toggleTodoModel.events.toggleTodo(todoId)
+  const handleClick = (): void => {
+    toggleTodoModel.toggleTodoEvent.toggleTodo({todoId})
+  }
 
   return (
-    <input type='checkbox' checked={todo.completed} onClick={handleClick} />
+    <input type='checkbox' checked={todo.completed} onClick={handleClick} readOnly/>
   )
 }
 

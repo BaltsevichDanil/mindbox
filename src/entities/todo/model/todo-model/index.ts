@@ -4,45 +4,29 @@ import {useStore} from 'effector-react'
 import {api} from 'src/shared'
 import {Todo} from 'src/shared/api/models'
 
-
 export type QueryConfig = {
   completed?: boolean
-  id?: string
+  createdAt?: boolean
 }
 
 const setQueryConfig = createEvent<QueryConfig>()
 
 const getTodoListFx = createEffect(() => {
-  return api.getTodos()
+  return api.todos.getTodos()
 })
 
-const getTodoByIdFx = createEffect((id: string) => {
-  return api.getTodoById(id)
-})
-
-export const todoInitialState: Record<number, Todo> = {}
+export const todoInitialState: Record<string, Todo> = {}
 
 export const $todos = createStore(todoInitialState)
   .on(getTodoListFx.doneData, (_, payload) => payload)
-  .on(getTodoByIdFx.doneData, (state, payload) => {
-    if (payload) {
-      return {
-        ...state,
-        ...payload
-      }
-    }
 
-    return {...state}
-  })
-
-export const $queryConfig = createStore<QueryConfig>({}).on(
+export const $queryConfig = createStore<QueryConfig>({completed: false, createdAt: true}).on(
   setQueryConfig,
   (_, payload) => payload
 )
 
-// Можно добавить потенциально debounce логику
-export const $todoListLoading = getTodoListFx.pending
-export const $todoByIdLoading = getTodoByIdFx.pending
+export const $todoListLoading = getTodoListFx
+  .pending
 
 export const $todoList = combine($todos, todo => Object.values(todo))
 
@@ -50,17 +34,25 @@ export const $todosFiltered = combine(
   $todoList,
   $queryConfig,
   (todoList, config) => {
-    return todoList.filter(
-      todo =>
-        config.completed === undefined || todo.completed === config.completed
-    )
+    if (config.completed) {
+      const completedTodos = todoList.filter(todo => todo.completed)
+      const uncompletedTodos = todoList.filter(todo => !todo.completed)
+
+      return [...uncompletedTodos, ...completedTodos, ]
+    }
+
+    if (config.createdAt) {
+      return todoList.sort((firstTodo, secondTodo) => new Date(secondTodo.createdAt).getTime() - new Date(firstTodo.createdAt).getTime())
+    }
+
+    return todoList
   }
 )
 
 const useTodo = (
   todoId: string
 ): import('src/shared/api/models').Todo | undefined => {
-  return useStore($todos)[todoId as never]
+  return useStore($todos)[todoId]
 }
 
 export const $todoListEmpty = $todosFiltered.map(list => list.length === 0)
@@ -68,7 +60,6 @@ export const $todoListEmpty = $todosFiltered.map(list => list.length === 0)
 export const events = {setQueryConfig}
 
 export const effects = {
-  getTodoByIdFx,
   getTodoListFx
 }
 

@@ -1,23 +1,18 @@
-import {ChangeEvent, FC} from 'react'
+import {FC} from 'react'
 import styled from 'styled-components'
 
 interface IProps {
-  value: string
   placeholder: string
-  onChange: (text: string) => void
+  name: string
 }
 
 const Input: FC<IProps> = props => {
-  const {value, placeholder, onChange} = props
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void =>
-    onChange(e.target.value)
+const {name, placeholder} = props
 
   return (
     <StyledInput
-      value={value}
+      name={name}
       placeholder={placeholder}
-      onChange={handleChange}
     />
   )
 }

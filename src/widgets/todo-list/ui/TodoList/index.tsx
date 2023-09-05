@@ -1,10 +1,10 @@
+import {FC} from 'react'
+import {TodoCard, todoModel} from 'src/entities'
+
 import {list, variant} from '@effector/reflect'
 import {combine} from 'effector'
-import {FC} from 'react'
-
-import {TodoCard, todoModel} from 'src/entities'
-import Toggle from 'src/features/toggle-todo/ui/Toggle'
-import {Todo} from 'src/shared/api/models'
+import {Delete, Toggle} from 'src/features'
+import { Todo } from 'src/shared/api/models'
 
 const List: FC = () => {
   return <ListContent />
@@ -16,7 +16,7 @@ interface IListItemViewProps {
 const ListItemView: FC<IListItemViewProps> = ({todo}) => {
   return (
     <div key={todo.id}>
-      <TodoCard data={todo} before={<Toggle todoId={todo.id} />} />
+      <TodoCard data={todo} before={<Toggle todoId={todo.id} />}  after={<Delete todoId={todo.id} />}/>
     </div>
   )
 }
@@ -24,7 +24,9 @@ const ListItemView: FC<IListItemViewProps> = ({todo}) => {
 const TodoList = list({
   view: ListItemView,
   source: todoModel.$todosFiltered,
-  bind: {},
+  bind: {
+
+  },
   mapItem: {
     todo: (todo: Todo) => todo
   }
