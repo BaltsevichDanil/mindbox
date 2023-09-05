@@ -3,14 +3,19 @@ import styled from 'styled-components'
 
 interface IProps extends PropsWithChildren {
   secondary?: boolean
+  onClick?: VoidFunction
 }
 
 const Button: FC<IProps> = props => {
-  const {secondary, children} = props
-  return <ButtonContainer $secondary={secondary}>{children}</ButtonContainer>
+  const {secondary, onClick, children} = props
+  return (
+    <ButtonContainer $secondary={secondary} onClick={onClick}>
+      {children}
+    </ButtonContainer>
+  )
 }
 
-const ButtonContainer = styled.div<{$secondary?: boolean}>`
+const ButtonContainer = styled.button<{$secondary?: boolean}>`
   min-width: 20px;
   max-width: max-content;
 
@@ -22,6 +27,8 @@ const ButtonContainer = styled.div<{$secondary?: boolean}>`
 
   padding: 8px;
   border-radius: 8px;
+  outline: none;
+  border: 1px solid white;
 
   cursor: pointer;
 
