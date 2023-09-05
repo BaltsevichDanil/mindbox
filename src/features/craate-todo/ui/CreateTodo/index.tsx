@@ -1,7 +1,10 @@
 import {FC, FormEvent} from 'react'
+import {AiOutlineArrowRight} from 'react-icons/ai'
+import styled from 'styled-components'
 
 import {createTodoModel} from 'src/features'
-import {Input, Button} from 'src/shared'
+import {Input, Button, text} from 'src/shared'
+
 
 interface ICustomElements extends HTMLFormControlsCollection {
   title: HTMLInputElement
@@ -23,13 +26,20 @@ const CreateTodo: FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Input name='title' placeholder={'Создать todo'} />
+    <CreateTodoForm onSubmit={handleSubmit}>
+      <Input name='title' placeholder={text.createTodo} />
       <Button type='submit'>
-        <p>Сохранить</p>
+        <AiOutlineArrowRight />
       </Button>
-    </form>
+    </CreateTodoForm>
   )
 }
+
+const CreateTodoForm = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+`
 
 export default CreateTodo

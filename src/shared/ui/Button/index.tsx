@@ -5,21 +5,37 @@ interface IProps
   extends PropsWithChildren,
     ButtonHTMLAttributes<HTMLButtonElement> {
   secondary?: boolean
+  height?: number
+  width?: number
 }
 
 const Button: FC<IProps> = props => {
-  const {secondary, children} = props
-
+  const {secondary, width, height, children} = props
+  console.log(secondary)
   return (
-    <ButtonContainer $secondary={secondary} {...props}>
+    <ButtonContainer
+      $secondary={secondary}
+      $width={width}
+      $height={height}
+      {...props}
+    >
       {children}
     </ButtonContainer>
   )
 }
 
-const ButtonContainer = styled.button<{$secondary?: boolean}>`
-  min-width: 20px;
-  max-width: max-content;
+const ButtonContainer = styled.button<{
+  $secondary?: boolean
+  $height?: number
+  $width?: number
+}>`
+  height: ${(props): string => (props.$height ? `${props.$height}px` : '40px')};
+  min-width: ${(props): string =>
+    props.$width ? `${props.$width}px` : '40px'};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background-color: ${(props): string =>
     props.$secondary
@@ -35,6 +51,7 @@ const ButtonContainer = styled.button<{$secondary?: boolean}>`
   cursor: pointer;
 
   transition: 0.2s;
+
   &:hover {
     background-color: ${(props): string =>
       props.$secondary

@@ -17,12 +17,6 @@ const Container = styled.div`
   border-radius: 16px;
 
   padding: 8px;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-  &:hover {
-    background-color: var(--secondary-container-hover-color);
-  }
+  margin-bottom: 8px;
 `
 export default ToDoContainer
