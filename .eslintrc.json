@@ -1,0 +1,212 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint/eslint-plugin"
+  ],
+  "extends": [
+    "airbnb-typescript/base",
+    "prettier",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "root": true,
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "path": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "no-unsafe-finally": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-cycle": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "max-classes-per-file": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/no-named-as-default": "off",
+    "semi": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
+    "curly": [
+      "error",
+      "all"
+    ],
+    "import/prefer-default-export": "off",
+    "array-callback-return": "error",
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": false
+      }
+    ],
+    "no-return-await": "off",
+    "no-lonely-if": "off",
+    "no-invalid-this": "off",
+    "no-empty-pattern": "error",
+    "no-magic-numbers": "off",
+    "no-unused-vars": "error",
+    "object-shorthand": [
+      "error",
+      "always"
+    ],
+    "space-before-blocks": "error",
+    "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      {
+        "accessibility": "no-public"
+      }
+    ],
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "default",
+        "format": [
+          "camelCase"
+        ]
+      },
+      {
+        "selector": "variable",
+        "types": [
+          "function"
+        ],
+        "format": [
+          "camelCase",
+          "PascalCase"
+        ]
+      },
+      {
+        "selector": "variable",
+        "format": [
+          "camelCase",
+          "UPPER_CASE",
+          "PascalCase",
+          "snake_case"
+        ],
+        "filter": {
+          "regex": "^(.*-.*.*_.*)$",
+          "match": false
+        },
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "enumMember",
+        "format": [
+          "camelCase",
+          "PascalCase",
+          "UPPER_CASE"
+        ]
+      },
+      {
+        "selector": "parameter",
+        "format": [
+          "camelCase",
+          "snake_case"
+        ],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "memberLike",
+        "format": [
+          "camelCase",
+          "snake_case",
+          "PascalCase"
+        ],
+        "leadingUnderscore": "allow"
+      },
+      {
+        "selector": "memberLike",
+        "format": null
+      },
+      {
+        "selector": "memberLike",
+        "modifiers": [
+          "private"
+        ],
+        "format": [
+          "camelCase"
+        ],
+        "leadingUnderscore": "require"
+      },
+      {
+        "selector": "typeLike",
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": [
+      "error",
+      {
+        "ignoreRestArgs": true
+      }
+    ],
+    "@typescript-eslint/no-invalid-this": "error",
+    "@typescript-eslint/no-require-imports": "error",
+    "@typescript-eslint/no-for-in-array": "error",
+    "@typescript-eslint/no-misused-promises": "error",
+    "@typescript-eslint/no-magic-numbers": [
+      "warn",
+      {
+        "ignoreEnums": true,
+        "ignoreArrayIndexes": true,
+        "ignoreNumericLiteralTypes": true,
+        "ignoreReadonlyClassProperties": true,
+        "ignore": [
+          0,
+          1
+        ]
+      }
+    ],
+    "@typescript-eslint/return-await": [
+      "error",
+      "always"
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "never"
+    ],
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always",
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object"
+        ]
+      }
+    ],
+    "no-restricted-syntax": "off"
+  },
+  "ignorePatterns": [
+    "vite.config.ts",
+    "jest.config.ts",
+    "src/__tests__"
+  ]
+}
